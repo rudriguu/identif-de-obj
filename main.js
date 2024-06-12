@@ -18,7 +18,7 @@ function draw() {
 
     if(status != "")
         {
-            for (i = 0; i < objects.lenght; i++) {
+            for (i = 0; i < objects.length; i++) {
                 document.getElementById("status").innerHTML = "Status: Objeto Detectado";
                 fill("#FF0000");
                 percent = floor(objects[i].confidence * 100);
@@ -28,25 +28,16 @@ function draw() {
                 rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
             }
         }
-    fill("#FF0000");
-    text("Dog", 45, 75);
-    noFill();
-    stroke("#FF0000");
-        rect(30, 60, 450, 350 );
-        fill("#FF0000");
-        text("Cat", 320, 120);
-        noFill();
-        stroke("#FF0000");
-        rect(300, 90, 270, 320 );
+    
 }
 
 function modelLoaded() {
     console.log("Model Loaded!")
     status = true;
-    objectDetector.detect(img, gotResults);
+    objectDetector.detect(img, gotResult);
 }
 
-function gotResults(error, results) {
+function gotResult(error, results) {
     if (error) {
         console.log(error);
     }
